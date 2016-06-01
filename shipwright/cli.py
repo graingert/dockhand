@@ -208,6 +208,29 @@ def memo(f, arg, memos={}):
         return memos[arg]
 
 
+def truncate(name, n=25):
+    ns, s, repo = name.rpartition('/')
+    if not s:
+        return truncate_middle(name, n=n)
+    else:
+        target = n - (len(repo) + 1)
+        if target > 0:
+            return truncate_middle(ns, n=target) + '/' + repo
+        else:
+            return '\u2026/' + truncate_middle(repo, n=n-2)
+
+
+def truncate_middle(s, n):
+    if len(s) <= n:
+        # string is already short-enough
+        return s
+    # half of the size, minus the 3 .'s
+    n_2 = n // 2 - 1
+    # whatever's left
+    n_1 = n - n_2 - 1
+    return '{0}\u2026{1}'.format(s[:n_1], s[-n_2:])
+
+
 def mk_show(evt):
     if evt['event'] in ('build_msg', 'push') or 'error' in evt:
         name = None

@@ -70,3 +70,26 @@ def test_assert_hostname(tmpdir):
     )
 
     assert not client.adapters['https://'].assert_hostname
+
+
+examples = [
+    ('nginx', 'nginx'),
+    ('nginx_nginx_nginx_nginx_ng', 'nginx_nginx_n…nx_nginx_ng'),
+    (
+        '1234567891234.dkr.ecr.xyz-123.example.com/abcxyzdef_test',
+        '12345….com/abcxyzdef_test',
+    ),
+    (
+        '1234567891234.dkr.ecr.xyz-123.example.com/nginx_nginx_nginx_nginx_ng',
+        '…/nginx_nginx_…x_nginx_ng',
+    ),
+    (
+        '1/nginx_nginx_nginx_nginx_ng',
+        '…/nginx_nginx_…x_nginx_ng',
+    )
+]
+
+
+@pytest.mark.parametrize('input,expected', examples)
+def test_truncate(input, expected):
+    assert cli.truncate(input) == expected
