@@ -2,6 +2,7 @@
 ------------------
 
 - Isolate all git functionality, so as to create pluggable Source Control wrappers.
+- More efficient required build detection. (`Issue #18 <https://github.com/graingert/dockhand/pull/18>`_)
 
 
 0.3.2 (2016-06-06)
