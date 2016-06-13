@@ -1,3 +1,8 @@
+FORK
+====
+While https://github.com/6si/shipwright will be kept up-to-date.
+I only have access to the dockhand name on PyPI.
+
 Shipwright builds shared Docker images within a git repository in **the
 right order** and publishes them tagged with git's revision/branch
 information so you'll never loose track of an image's origin.

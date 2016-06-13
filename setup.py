@@ -19,7 +19,7 @@ history = open('CHANGES.rst').read().replace('.. :changelog:', '')
 
 
 setup(
-    name='shipwright',
+    name='dockhand',
     version='0.3.3.dev0',
     url='https://github.com/6si/shipwright/',
     license='Apache Software License',
